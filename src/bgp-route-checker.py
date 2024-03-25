@@ -114,16 +114,6 @@ def bgp_path_checker_qrator(cidr):
     # timestamp
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
 
-    if options.test:
-        # filename = "qrator-" + cidr.replace("/", "-") + ".json"
-        filename = "qrator-" + cidr.replace("/", "-") + ".json.mod"
-        with open(filename, "r") as entrada:
-            data = json.load(entrada)
-
-        paths = data["data"][cidr]
-
-        return paths
-
     # get response from Qrator api
     with urllib.request.urlopen(url) as r:
         # response code
