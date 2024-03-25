@@ -136,6 +136,13 @@ def bgp_path_checker_qrator(cidr):
             salida.write(json.dumps(data, indent=2))
             logger.info(f"Saved the obtained data in {filename}")
 
+    # exit if no data found
+    if cidr not in data["data"].keys():
+        logger.info(
+            "The given CIDR was not found. See IRR/WHOIS/RADB/etc. and try different prefix. Exiting."
+        )
+        sys.exit(0)
+
     # passing over only paths data
     paths = data["data"][cidr]
 
