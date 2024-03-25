@@ -9,3 +9,5 @@ cd src
 python bgp-route-checker.py -h
 python bgp-route-checker.py --cidr 10.0.0.0/8  # replace 10.0.0.0/8 with ipv4 public cidr you wish to check
 ```
+
+No additional packages to install using poetry/pip. Confirmed on python@3.12.2 and also on [python@3.8.19 which is almost reaching eol](https://devguide.python.org/versions/).
