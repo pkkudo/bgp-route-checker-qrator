@@ -85,8 +85,11 @@ def parse_options():
 
 def validate_ipv4network(cidr):
     try:
-        ipaddress.IPv4Network(cidr)
+        check_cidr = ipaddress.IPv4Network(cidr)
         logger.debug(f"{cidr} is valid IPv4 network")
+        if check_cidr.is_private:
+            logger.info("The CIDR is on private IP range. Exiting.")
+            sys.exit(0)
         if "/" not in cidr:
             logger.warning(
                 f"Using {cidr}/32 as no prefix was given in the cidr argument"
